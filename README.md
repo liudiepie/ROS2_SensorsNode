@@ -97,15 +97,3 @@ ros2 launch sensors laser_launch.py
 ```
 Result  
 ![](<image/Laser.png>)  
-
-## Interesting issues
-1. To get the last 20 data, the data should be obtained after Ctrl-C.  
-   When trying on_shutdown(), ROS2 gets error on it.  
-   This issue might be in the developer state.  
-   For alternative method, KeyboardInterrupt can capture Ctrl-C to continue the code before shutdown.  
-2. To get the time, we should publish get_clock().now() to store the time in stamp.  
-   Minus the first time data in all dataset, the last 20 time data should be the time since subscriber created.  
-3. The way to import ransac.py is to check the folder install/python3.8/data_processor/.  
-   Though ransac.py is actually under "utils" folder, it is under "data_processor" in the "install" folder.  
-   Therefore, when importing ransac.py, it should be "from data_processor import ransac".  
-   RANSAC is homework in ENPM673 Perception, it is about removing outliers to receive a better linear fit.  
